@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "PLACEHOLDER PROJECT NAME"
+version = "0.1.0"
+description = "PLACEHOLDER DESCRIPTION OF THE PROJECT"
+authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+PyYAML = "^6"
+python-json-logger = "^2"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^5"
+isort = "^5.5"
+black = "^22.9"
+pre-commit = "^2.20"
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+add_imports = ["from __future__ import annotations"]
+force_grid_wrap = 2
+multi_line_output = 3
+include_trailing_comma = true
+quiet = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
