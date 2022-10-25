@@ -35,3 +35,9 @@ repos:
         entry: poetry run isort .
         language: python
         files: ".*.py"
+    -   id: lizard
+        name: Running lizard from local poetry env
+        entry: poetry run lizard
+        # Max 7 arguments allowed, show only warnings, sort by CCN
+        args: ["--CCN", "8", "-a", "7", "-w", "-s", "cyclomatic_complexity"]
+        language: python

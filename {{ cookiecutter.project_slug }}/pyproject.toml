@@ -1,8 +1,10 @@
 [tool.poetry]
-name = "PLACEHOLDER PROJECT NAME"
-version = "0.1.0"
-description = "PLACEHOLDER DESCRIPTION OF THE PROJECT"
-authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
+name = "{{ cookiecutter.project_name }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
+readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -14,6 +16,11 @@ flake8 = "^5"
 isort = "^5.5"
 black = "^22.9"
 pre-commit = "^2.20"
+flake8-bugbear = "^22"
+lizard = "^1.17"
+{% if cookiecutter.pytest == "y" -%}
+pytest = "^7.1"
+{%- endif %}
 
 [tool.black]
 line-length = 100
