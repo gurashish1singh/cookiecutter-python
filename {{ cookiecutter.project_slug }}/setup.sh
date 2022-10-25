@@ -22,14 +22,6 @@ setup_poetry()
     fi
 
     msg "Installing poetry environment based on the template pyproject.toml file"
-    poetry add \
-        black@^22.9 \
-        flake8@^5 \
-        isort@^5.5 \
-        pre-commit@^2.20 \
-        --dev
-    poetry add python-json-logger@^2 \
-        pyyaml@^6
     poetry install
     echo
 }

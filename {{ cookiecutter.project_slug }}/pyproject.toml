@@ -7,7 +7,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 PyYAML = "^6"
 python-json-logger = "^2"
 
@@ -20,6 +20,8 @@ flake8-bugbear = "^22"
 lizard = "^1.17"
 {% if cookiecutter.pytest == "y" -%}
 pytest = "^7.1"
+covdefaults = "^2"
+coverage = "^6.5"
 {%- endif %}
 
 [tool.black]
@@ -31,6 +33,14 @@ force_grid_wrap = 2
 multi_line_output = 3
 include_trailing_comma = true
 quiet = true
+
+{% if cookiecutter.pytest == "y" -%}
+[tool.coverage.run]
+plugins = ["covdefaults"]
+
+[tool.coverage.report]
+fail_under = 95
+{%- endif %}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
