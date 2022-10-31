@@ -17,12 +17,16 @@ My take on a [Cookiecutter](https://github.com/cookiecutter/cookiecutter) templa
 
 - Install the `cookiecutter` library.
 
-    ```py
+    ```python
     python -m pip install cookiecutter
     ```
 
 - Run the command:
-    ```py
+    ```python
     python -m cookiecutter https://github.com/gurashish1singh/cookiecutter-python.git
     ```
-- This template uses post-project generation hooks to create a Poetry virtualenv, install all dependencies, and install the pre-commit and pre-push hooks.
+- This template uses post-project generation hooks to:
+   - Initialize a git repository (with default branch as main), IF the working directory is not already a git repository
+   - Create a Poetry virtualenv
+   - Install all dependencies
+   - Install the pre-commit and pre-push hooks.
