@@ -30,13 +30,11 @@ repos:
         entry: poetry run flake8 .
         language: python
         files: ".*.py"
-        exclude: "{{ cookiecutter.project_slug }}"
     -   id: isort
         name: Running isort from local poetry env
         entry: poetry run isort .
         language: python
         files: ".*.py"
-        exclude: "{{ cookiecutter.project_slug }}"
     -   id: lizard
         name: Running lizard from local poetry env
         entry: poetry run lizard

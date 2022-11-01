@@ -1,17 +1,32 @@
-# Placeholder Project Name
+# Cookiecutter Python Package
 
+My take on a [Cookiecutter](https://github.com/cookiecutter/cookiecutter) template for a Python package with Poetry as the dependency manager.
 
-## Initial setup
-The bash script **setup.sh** is an executable. Devs should run
-```bash
-chmod +x setup.sh
-```
-(Powershell may have different syntax to set executable permissions) before running
-```
-bash setup.sh
-```
+**NOTE:** Only Python 3.8+ is supported.
 
-The **pyproject.toml** file contains project dependencies and can be updated to add more dependencies at any stage of the project by running `poetry add <packagename>`.
-Minimum Python version supported is 3.9.
+---
 
-The **.pre-commit-config.yaml** contains all the linters that runs before committing changes.
+## Features
+- Hooks: Pre-commit
+- Formatters and Linters: Black, Flake8, Flake8-bugbear, Isort, and Lizard
+- Testing Frameworks (Optional): Pytest, Coverage, and CovDefaults
+
+## Usage
+
+- Since this template uses Poetry as the dependancy manager, install poetry from `https://python-poetry.org/docs/#installation`
+
+- Install the `cookiecutter` library.
+
+    ```python
+    python -m pip install cookiecutter
+    ```
+
+- Run the command:
+    ```python
+    python -m cookiecutter https://github.com/gurashish1singh/cookiecutter-python.git
+    ```
+- This template uses post-project generation hooks to:
+   - Initialize a git repository (with default branch as main), IF the working directory is not already a git repository
+   - Create a Poetry virtualenv
+   - Install all dependencies
+   - Install the pre-commit and pre-push hooks.

@@ -1,0 +1,11 @@
+{
+    "full_name": "Gurashish Singh",
+    "email": "gurashish1singh@gmail.com",
+    "github_username": "gurashish1singh",
+    "project_name": "Boilerplate Template",
+    "github_repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_short_description": "Minimal python cookiecutter template with Poetry as the dependency manager and Black, Isort, Flake8, Flake8-bugbear as the linters.",
+    "version": "0.1.0",
+    "pytest": ["y", "n"]
+}
