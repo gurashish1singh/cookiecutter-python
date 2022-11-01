@@ -27,12 +27,6 @@ multi_line_output = 3
 include_trailing_comma = true
 quiet = true
 
-[tool.coverage.run]
-plugins = ["covdefaults"]
-
-[tool.coverage.report]
-fail_under = 95
-
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
