@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cookiecutter-python"
-version = "0.1.0"
+version = "1.0.0"
 description = "A Python Cookiecutter template with Poetry as a dependency manager"
 authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
 readme = "README.md"
