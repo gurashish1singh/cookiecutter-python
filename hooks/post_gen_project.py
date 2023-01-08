@@ -6,20 +6,20 @@ import subprocess
 import sys
 from pathlib import Path
 
-ERROR_MSG = "Error occured while running cmd"
+ERROR_MSG = "Error occured while running command"
 PRETTY_LINES = "*" * 80
 
 
 def main() -> int:
     working_dir = Path().resolve()
     git_dir = Path(working_dir, ".git")
-    ret_code_one = 0
+    return_code_one = 0
     if not git_dir.exists():
-        ret_code_one = initialize_git()
+        return_code_one = initialize_git()
 
-    if ret_code_one == 0:
-        ret_code_two = setup_environment()
-    return ret_code_one or ret_code_two or 0
+    if return_code_one == 0:
+        return_code_two = setup_environment()
+    return return_code_one or return_code_two or 0
 
 
 def initialize_git() -> int:
@@ -30,7 +30,8 @@ def initialize_git() -> int:
         ),
         "init_git": (
             shlex.split("git init"),
-            "Initializing an empty git repository\n",
+            "Initializing an empty git repository locally. You will have to create a repo "
+            "on remote.\n",
         ),
     }
     for cmds, message in COMMANDS_AND_MESSAGE.values():

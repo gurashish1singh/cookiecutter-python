@@ -40,6 +40,9 @@ plugins = ["covdefaults"]
 
 [tool.coverage.report]
 fail_under = 95
+omit = [
+    "logger.py"
+]
 {%- endif %}
 
 [build-system]
