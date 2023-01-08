@@ -34,7 +34,9 @@ A [Cookiecutter](https://github.com/cookiecutter/cookiecutter) template for a Py
     python -m cookiecutter https://github.com/gurashish1singh/cookiecutter-python.git
     ```
 - This template uses post-project generation hooks to:
-   - Initialize a git repository (with default branch as main), IF the working directory is not already a git repository
+   - Initialize a git repository (with default branch as main), IF the working directory is not already a git repository.
+
+     **NOTE**: You will have to create a repositry on remote if it doesn't already exist before running the cookiecutter command.
    - Create a Poetry virtualenv
    - Install all dependencies
    - Install the pre-commit and pre-push hooks
