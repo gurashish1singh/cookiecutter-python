@@ -19,7 +19,7 @@ def main() -> int:
 
     if return_code_one == 0:
         return_code_two = setup_environment()
-    return return_code_one or return_code_two or 0
+    return 0 or return_code_one or return_code_two
 
 
 def initialize_git() -> int:

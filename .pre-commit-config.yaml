@@ -10,8 +10,10 @@ repos:
         stages: [push]
     -   id: check-toml
         stages: [push]
+        exclude: "{{ cookiecutter.project_slug }}/pyproject.toml"
     -   id: check-yaml
         stages: [push]
+        exclude: "{{ cookiecutter.project_slug }}/.pre-commit-config.yaml"
     -   id: end-of-file-fixer
         stages: [push]
     -   id: trailing-whitespace
@@ -28,13 +30,13 @@ repos:
     -   id: flake8
         name: Running flake8 from local poetry env
         entry: poetry run flake8 .
-        language: python
+        language: system
         files: ".*.py"
         exclude: "{{ cookiecutter.project_slug }}"
     -   id: isort
         name: Running isort from local poetry env
         entry: poetry run isort .
-        language: python
+        language: system
         files: ".*.py"
         exclude: "{{ cookiecutter.project_slug }}"
     -   id: lizard
@@ -42,4 +44,5 @@ repos:
         entry: poetry run lizard
         # Max 7 arguments allowed, show only warnings, sort by CCN, exclude .venv
         args: ["--CCN", "8", "-a", "7", "-w", "-s", "cyclomatic_complexity", "-x", ".\\.venv\\*"]
-        language: python
+        language: system
+        files: ".*.py"
