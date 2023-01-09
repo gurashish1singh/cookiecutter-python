@@ -43,7 +43,7 @@ branch = true
 fail_under = 95
 omit = [
     "logger.py",
-    "*/tests/*","
+    "*/tests/*",
 ]
 exclude_lines = [
     # Have to re-enable the standard pragma

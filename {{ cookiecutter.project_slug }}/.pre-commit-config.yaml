@@ -30,6 +30,7 @@ repos:
         name: Running flake8 from local poetry env
         entry: poetry run flake8 .
         language: system
+        pass_filenames: false
         files: ".*.py"
     -   id: isort
         name: Running isort from local poetry env
