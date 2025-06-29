@@ -2,16 +2,12 @@ from __future__ import annotations
 
 import os
 import pathlib
-import shlex
 import subprocess
 import sys
 import venv
-from pathlib import Path
 
 ERROR_MSG = "Error occured while running command"
 PRETTY_LINES = "*" * 80
-PROJECT_NAME = "{{ cookiecutter.project_slug }}"
-# TODO: Can allow user to pass it in through cookiecutter.json
 VENV_NAME = ".venv"
 VIRTUAL_ENV = "VIRTUAL_ENV"
 
@@ -23,43 +19,8 @@ SUBPROCESS_PARAMS = {
 
 
 def main() -> int:
-    working_dir = Path().resolve()
-    git_dir = Path(working_dir, ".git")
-    return_code_one = 0
-    if not git_dir.exists():
-        return_code_one = initialize_git()
-
-    if return_code_one == 0:
-        return_code_two = setup_environment()
-
-    if return_code_two == 0:
-        return_code_three = _rename_pyproject_toml_file()
-        print(f"New project {PROJECT_NAME!r} is setup.")
-
-    return 0 or return_code_one or return_code_two or return_code_three
-
-
-def initialize_git() -> int:
-    COMMANDS_AND_MESSAGE = {
-        "default_branch": (
-            shlex.split("git config --global init.defaultBranch main"),
-            PRETTY_LINES,
-        ),
-        "init_git": (
-            shlex.split("git init"),
-            "Initializing an empty git repository locally. You will have to create a repository "
-            "on remote.\n",
-        ),
-    }
-    for cmds, message in COMMANDS_AND_MESSAGE.values():
-        print(message)
-        try:
-            subprocess.run(cmds, **SUBPROCESS_PARAMS)
-        except subprocess.CalledProcessError as e:
-            print(ERROR_MSG, e)
-            return e.returncode
-
-    return 0
+    return_code_one = setup_environment()
+    return 0 or return_code_one
 
 
 def setup_environment() -> int:
@@ -76,9 +37,8 @@ def setup_environment() -> int:
 
 
 def _create_new_environment() -> str:
-    parent_dir = pathlib.Path(os.getcwd()).parent.resolve()
-    project_name = PROJECT_NAME.strip()
-    python_venv_path = str(parent_dir / project_name / VENV_NAME)
+    parent_dir = pathlib.Path(os.getcwd())
+    python_venv_path = str(parent_dir / VENV_NAME)
 
     print(PRETTY_LINES)
     print(f"Attempting to create a new virtual env at {python_venv_path}")
@@ -135,18 +95,5 @@ def _install_requirements(python_executable_path: str) -> int:
     return 0
 
 
-def _rename_pyproject_toml_file() -> int:
-    try:
-        os.rename(
-            "template-pyproject.toml",
-            "pyproject.toml",
-        )
-    except subprocess.CalledProcessError as e:
-        print(ERROR_MSG, e)
-        return e.returncode
-
-    return 0
-
-
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

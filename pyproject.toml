@@ -1,25 +1,3 @@
-[tool.poetry]
-name = "cookiecutter-python"
-version = "0.1.0"
-description = "A Python Cookiecutter template with Poetry as a dependency manager"
-authors = ["Gurashish Singh <gurashish1singh@gmail.com>"]
-readme = "README.md"
-license = "MIT"
-
-[tool.poetry.dependencies]
-python = "^3.8"
-
-[tool.poetry.dev-dependencies]
-flake8 = "^5"
-isort = "^5.5"
-black = "^22.9"
-pre-commit = "^2.20"
-flake8-bugbear = "^22"
-lizard = "^1.17"
-
-[tool.black]
-line-length = 100
-
 [tool.isort]
 add_imports = ["from __future__ import annotations"]
 force_grid_wrap = 2
@@ -27,6 +5,32 @@ multi_line_output = 3
 include_trailing_comma = true
 quiet = true
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+line-length = 120
+
+# Exclude TOML file from ruff check as it contains jinja syntax that fails toml parser
+exclude = [
+    "*/pyproject.toml",
+    "*/.venv"
+]
+
+[tool.ruff.lint]
+# Copied from docs
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`) codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default
+# I -> isort.
+# flake8-bugbear (`B`)
+select = ["E4", "E7", "E9", "F", "I", "B"]
+# BOO8 - https://docs.astral.sh/ruff/rules/function-call-in-default-argument/ (mostly ignoring for pydantic)
+ignore = ["B008"]
+
+# Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ["B"]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
