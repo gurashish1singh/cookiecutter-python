@@ -1,0 +1,6 @@
+-r requirements.txt
+{% if cookiecutter.pytest == "y" -%}
+pytest>=7.4.4,<8.0
+covdefaults>=2.3.0,<3.0
+coverage>=7.4.4,<8.0
+{%- endif %}
